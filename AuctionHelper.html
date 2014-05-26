@@ -1,0 +1,45 @@
+<head>
+  <title>AuctionHelper</title>
+</head>
+
+<body>
+  {{> page}}
+</body>
+
+<template name="page">
+  {{#unless currentUser}}
+    {{> loginButtons}}
+  {{/unless}}
+  {{#if currentUser}}
+    {{#each auction}}
+      {{> auctionDetail}}
+    {{/each}}
+  {{/if}}
+</template>
+
+<template name="auctionDetail">
+
+  <dl>
+    <dt>Countdown</dt>
+      <dd><span id="coundown">{{countdown}}</span></dd>
+    <dt>Current Bid</dt>
+      <dd><span id="currentBid">{{currentBid}}</span></dd>
+    <dt>High Bidder</dt>
+      <dd><span id="currentBidder">{{currentBidder}}</span></dd>
+    <dt>Bid Options</dt>
+      <dd>
+          <input id="btnBidOne" type="button" value="Bid +1" />
+          <input id="btnResetCount" type="button" value="Reset" />
+      </dd>
+
+    <dt>Max Count</dt>
+      <dd>
+        <input type="text" id="maxCount" value="{{maxCount}}" />
+      </dd>
+    <dt>Max Bid</dt>
+      <dd>
+        <input type="text" id="maxBid" value="{{maxBid}}" />
+      </dd>
+  </dl> 
+  
+</template>
